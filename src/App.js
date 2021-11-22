@@ -1,13 +1,15 @@
-import Login from "./pages/Login";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./styles/theme";
+import "./app.css";
+import Display from "./components/Display";
+import Counter from "./components/Counter";
 
 function App() {
   return (
-    // xs = 12, md = 5
-    <ThemeProvider theme={theme}>
-      <Login />
-    </ThemeProvider>
+    <div className="App">
+      <header className="App-header">
+        <Display />
+        <Counter />
+      </header>
+    </div>
   );
 }
 
