@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { signInThunk } from "../../store/modules/user/thunks";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { EMAIL_REGEX } from "../../utils/regex_constants";
 
 // O Componente / página tem responsabilidade de receber informações do usuário através de eventos
 // E o redux tem a responsabilidade de trabalhar com as requisições e fornecer de maneira global as informações

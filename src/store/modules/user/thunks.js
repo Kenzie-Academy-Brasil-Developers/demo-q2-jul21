@@ -40,7 +40,13 @@ export const signInThunk = (userData, history) => async (dispatch) => {
 
     console.log(response.data);
   } catch (err) {
-    toast.error("Usuario nao encontrado");
+    if (
+      err.response.data.message === "Incorrect email / password combination"
+    ) {
+      toast.error("Email ou senha incorretos");
+    } else {
+      toast.error("Erro inesperado, tente novamente mais tarde");
+    }
   }
 };
 
