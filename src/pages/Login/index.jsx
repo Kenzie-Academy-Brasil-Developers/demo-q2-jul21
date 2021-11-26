@@ -10,7 +10,7 @@ import { useHistory } from "react-router";
 
 const Login = () => {
   const schema = yup.object().shape({
-    username: yup.string().required("Campo obrigatório"),
+    email: yup.string().email("Email inválido").required("Campo obrigatório"),
     password: yup
       .string()
       .min(6, "Mínimo de 6 dígitos")
@@ -42,8 +42,8 @@ const Login = () => {
     <div className="App-header">
       <h1> Login </h1>
       <form style={style} onSubmit={handleSubmit(handleSignIn)}>
-        <input placeholder="Nome de usuário" {...register("username")} />
-        <span>{errors.username?.message} </span>
+        <input placeholder="Nome de usuário" {...register("email")} />
+        <span>{errors.email?.message} </span>
         <input placeholder="Senha" type="password" {...register("password")} />
         <span>{errors.password?.message} </span>
         <button type="submit">Enviar</button>

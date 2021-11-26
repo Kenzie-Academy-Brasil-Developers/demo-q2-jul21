@@ -2,37 +2,47 @@ import { toast } from "react-toastify";
 import api from "../../../services/api";
 import { signIn } from "./actions";
 
-export const signInThunk =
-  (userData, toastError, history) => async (dispatch, getState) => {
-    // api
-    //   .post("/sessions/", userData)
-    //   .then((response) => {
-    //     /* Poderíamos decodificar o token de acesso e buscar as informações na api,
-    //   ou passar o id do usuario que vem no token para a store tbm*/
-    //     const { access } = response.data;
+// aqui nas actions não podemos utilizar hooks
+// hooks só são utilizados em componentes
 
-    //     localStorage.setItem("@demo:token", access);
+// A primeira função recebe os seus parametros, o que pode ser qualquer coisa
 
-    //     dispatch(signIn(access));
-    //     history.push("/dashboard");
-    //   })
-    //   .catch((err) => {
-    //     toast.error("Usuário não encontrado");
-    //   });
+// A segunda função é necessária para conseguirmos acessar o dispatch e o getState
+export const signInThunk = (userData, history) => async (dispatch) => {
+  // api
+  //   .post("/sessions/", userData)
+  //   .then((response) => {
+  //     /* Poderíamos decodificar o token de acesso e buscar as informações na api,
+  //   ou passar o id do usuario que vem no token para a store tbm*/
+  //     const { access } = response.data;
 
-    try {
-      const response = await api.post("/sessions/", userData);
+  //     localStorage.setItem("@demo:token", access);
 
-      localStorage.setItem("@demo:token", response.data.access);
+  //     dispatch(signIn(access));
+  //     history.push("/dashboard");
+  //   })
+  //   .catch((err) => {
+  //     toast.error("Usuário não encontrado");
+  //   });
 
-      dispatch(signIn(response.data.access));
-      history.push("/dashboard");
+  try {
+    const response = await api.post("/sessions/", userData);
 
-      console.log(response.data);
-    } catch (err) {
-      toast.error("Usuario nao encontrado");
-    }
-  };
+    // O JSON.Stringify só é necessário quando trabalhando com dados como objetos e arrays
+    localStorage.setItem("@demo:token", response.data.token);
+
+    // Nesse caso é necessário por ser um objeto
+    // Caso apareça no seu localStorage no browser [object object], está faltando o stringify
+    localStorage.setItem("@demo:user", JSON.stringify(response.data.user));
+
+    dispatch(signIn(response.data.token));
+    history.push("/dashboard");
+
+    console.log(response.data);
+  } catch (err) {
+    toast.error("Usuario nao encontrado");
+  }
+};
 
 export const logout = () => (dispatch, getState) => {};
 

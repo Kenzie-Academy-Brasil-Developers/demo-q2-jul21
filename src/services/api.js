@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://kenzieshop.herokuapp.com/",
+  baseURL: "https://kenziehub.herokuapp.com/",
 });
 
 export default api;
