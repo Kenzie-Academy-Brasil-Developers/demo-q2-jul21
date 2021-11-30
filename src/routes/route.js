@@ -1,9 +1,8 @@
 import { Redirect, Route as ReactDOMRoute } from "react-router-dom";
+import { useAuth } from "../providers/AuthContext";
 
 const Route = ({ isPrivate = false, component: Component, ...rest }) => {
-  // const { token } = useSelector((store) => store.user);
-
-  const token = false;
+  const { token } = useAuth();
 
   // a rota é privada e usuario nao ta logado = login
   // rota privada usuario logado = ok
