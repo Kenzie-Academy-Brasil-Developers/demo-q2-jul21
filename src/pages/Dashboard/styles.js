@@ -21,14 +21,14 @@ export const Section = styled.section`
   height: 100%;
   width: 25%;
   min-width: 250px;
+`;
 
-  div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 240px;
-  }
+export const SectionHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 240px;
 `;
 
 export const TechButton = styled.button`

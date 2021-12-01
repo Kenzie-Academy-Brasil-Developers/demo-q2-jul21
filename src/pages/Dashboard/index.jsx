@@ -11,6 +11,7 @@ import {
   TechButton,
   WorkButton,
   ProfileBadge,
+  SectionHeader,
 } from "./styles";
 
 import { FiMail, FiPlus, FiSmartphone } from "react-icons/fi";
@@ -34,16 +35,16 @@ const Dashboard = () => {
       <ModalCreateTech isOpen={techModal} setIsOpen={handleTechModal} />
       <Container>
         <Section>
-          <div>
+          <SectionHeader>
             <h3>Minhas tecnologias</h3>
             <TechButton onClick={() => setTechModal(true)}>
               <FiPlus />
             </TechButton>
-          </div>
+          </SectionHeader>
           {user.techs.map((tech) => (
             <Card
               key={tech.id}
-              description={""}
+              description={tech.status}
               greenSchema
               title={tech.title}
               onClick={() => {}}
@@ -51,18 +52,17 @@ const Dashboard = () => {
           ))}
         </Section>
         <Section>
-          <div>
+          <SectionHeader>
             <h3>Meus trabalhos</h3>
             <WorkButton>
               <FiPlus />
             </WorkButton>
-          </div>
-          {user.works.map((tech) => (
+          </SectionHeader>
+          {user.works.map((work) => (
             <Card
-              key={tech.id}
-              description={""}
-              greenSchema
-              title={tech.title}
+              key={work.id}
+              description={work.description}
+              title={work.title}
               onClick={() => {}}
             />
           ))}
