@@ -6,4 +6,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  border: 0px;
 }

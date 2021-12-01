@@ -7,6 +7,13 @@ import { toast } from "react-toastify";
 import api from "../../services/api";
 import { useHistory } from "react-router";
 
+import Button from "../../components/Button";
+
+import { Container, Form } from "./styles";
+import { TextField } from "@mui/material";
+
+import InputMask from "react-input-mask";
+
 const Signup = () => {
   const [loading, setLoading] = useState();
 
@@ -47,30 +54,70 @@ const Signup = () => {
   };
 
   return (
-    <div className="App-header">
-      <h1> Cadastro </h1>
-      <form style={style} onSubmit={handleSubmit(handleSignup)}>
-        <input placeholder="Nome" {...register("name")} />
-        <span>{errors.name?.message} </span>
+    <Container>
+      <Form onSubmit={handleSubmit(handleSignup)}>
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Email"
+          variant="outlined"
+          {...register("name")}
+          error={!!errors.name?.message}
+          helperText={errors.name?.message}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Email"
+          variant="outlined"
+          {...register("email")}
+          error={!!errors.email?.message}
+          helperText={errors.email?.message}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Senha"
+          variant="outlined"
+          type="password"
+          {...register("password")}
+          error={!!errors.password?.message}
+          helperText={errors.password?.message}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Bio"
+          variant="outlined"
+          {...register("bio")}
+          error={!!errors.bio?.message}
+          helperText={errors.bio?.message}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Contato"
+          variant="outlined"
+          {...register("contact")}
+          error={!!errors.contact?.message}
+          helperText={errors.contact?.message}
+        />
 
-        <input placeholder="Email" {...register("email")} />
-        <span>{errors.email?.message} </span>
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Módulo do curso"
+          variant="outlined"
+          {...register("course_module")}
+          error={!!errors.course_module?.message}
+          helperText={errors.course_module?.message}
+        />
 
-        <input placeholder="Senha" type="password" {...register("password")} />
-        <span>{errors.password?.message} </span>
-
-        <input placeholder="Bio" {...register("bio")} />
-        <span>{errors.bio?.message} </span>
-
-        <input placeholder="Contato" {...register("contact")} />
-        <span>{errors.contact?.message} </span>
-
-        <input placeholder="Módulo do curso" {...register("course_module")} />
-        <span>{errors.course_module?.message} </span>
-
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+        <Button primaryColor type="submit">
+          Enviar
+        </Button>
+      </Form>
+    </Container>
   );
 };
 

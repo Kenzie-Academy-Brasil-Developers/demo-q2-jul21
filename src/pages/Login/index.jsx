@@ -4,7 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import Button from "../../components/Button";
+
+import { Container, ContainerMessage, Form } from "./styles";
+
+import { TextField } from "@mui/material";
 
 const Login = () => {
   const [loading, setLoading] = useState();
@@ -22,10 +28,7 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const style = {
-    display: "flex",
-    flexDirection: "column",
-  };
+  const history = useHistory();
 
   const { signIn } = useAuth();
 
@@ -41,24 +44,43 @@ const Login = () => {
   };
 
   return (
-    <div className="App-header">
-      <h1> Login </h1>
-      <form style={style} onSubmit={handleSubmit(handleSignIn)}>
-        <input placeholder="Email" {...register("email")} />
-        <span>{errors.email?.message} </span>
-
-        <input placeholder="Senha" type="password" {...register("password")} />
-        <span>{errors.password?.message} </span>
-
-        {loading && <span>Carregando</span>}
-
-        <button type="submit">Enviar</button>
-      </form>
-
-      <div>
-        <Link to="/signup"> Cadastro </Link>
-      </div>
-    </div>
+    <Container>
+      <Form onSubmit={handleSubmit(handleSignIn)}>
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Email"
+          variant="outlined"
+          {...register("email")}
+          error={!!errors.email?.message}
+          helperText={errors.email?.message}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          label="Senha"
+          variant="outlined"
+          type="password"
+          {...register("password")}
+          error={!!errors.password?.message}
+          helperText={errors.password?.message}
+        />
+        <Button type="submit">Enviar</Button>
+        <ContainerMessage>
+          <span>
+            Criar uma página para mostrar suas{" "}
+            <strong>
+              habilidades
+              <br />
+              metas e progressos
+            </strong>
+          </span>
+        </ContainerMessage>
+        <Button primaryColor={false} onClick={() => history.push("/signup")}>
+          Cadastre-se
+        </Button>
+      </Form>
+    </Container>
   );
 };
 
