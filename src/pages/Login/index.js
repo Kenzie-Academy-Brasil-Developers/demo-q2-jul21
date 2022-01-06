@@ -29,7 +29,7 @@ function Login() {
   });
 
   const handleForm = (userData) => {
-    console.log('teste')
+    console.log("teste");
     signIn(userData, setError, history);
   };
 
