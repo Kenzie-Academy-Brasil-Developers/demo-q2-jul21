@@ -1,13 +1,15 @@
-import "./app.css";
-import Pokemon from "./components/Pokemon";
+import React from "react";
+import Routes from "./routes";
+import GlobalStyle from "./styles/global";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Pokemon />
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes />
+      <GlobalStyle />
+    </>
   );
 }
 
