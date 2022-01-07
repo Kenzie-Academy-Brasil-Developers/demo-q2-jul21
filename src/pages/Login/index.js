@@ -75,7 +75,7 @@ function Login() {
           Enviar
         </Button>
       </form>
-      {error && <span> Usuário ou senha incorretas! </span>}
+      {error && <span>Usuário ou senha incorretas!</span>}
     </Container>
   );
 }
