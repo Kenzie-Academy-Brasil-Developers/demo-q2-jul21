@@ -1,6 +1,8 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { ButtonStyled } from "./styles";
 
+// DRY = Don't repeat yourself
+// KISS = Keep it simple and stupid
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   deleted?: boolean;

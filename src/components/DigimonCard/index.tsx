@@ -1,3 +1,4 @@
+import { useFavoriteDigimons } from "../../hooks/FavoriteDigimons";
 import { Digimon } from "../../types/Digimon";
 import Button from "../Button";
 import { Container, Image } from "./styles";
@@ -8,6 +9,8 @@ interface DigimonCardProps {
 }
 
 const DigimonCard = ({ digimon, isFavorite = false }: DigimonCardProps) => {
+  const { addDigimon, deleteDigimon } = useFavoriteDigimons();
+
   return (
     <Container>
       <Image src={digimon.img} />
@@ -15,11 +18,15 @@ const DigimonCard = ({ digimon, isFavorite = false }: DigimonCardProps) => {
       <span>{digimon.level}</span>
       {isFavorite ? (
         <div>
-          <Button deleted={true}> Remover dos favoritos</Button>
+          <Button deleted={true} onClick={() => deleteDigimon(digimon)}>
+            Remover dos favoritos
+          </Button>
         </div>
       ) : (
         <div>
-          <Button>Adicionar aos favoritos</Button>
+          <Button onClick={() => addDigimon(digimon)}>
+            Adicionar aos favoritos
+          </Button>
         </div>
       )}
     </Container>
