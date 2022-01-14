@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Casaco",
+      "price": 290.9
+    },
+    {
+      "id": 2,
+      "title": "Camisa",
+      "price": 20.9
+    },
+    {
+      "id": 3,
+      "title": "Tênis",
+      "price": 400.0
+    },
+    {
+      "id": 4,
+      "title": "Óculos",
+      "price": 250.5
+    },
+    {
+      "id": 5,
+      "title": "Bermuda",
+      "price": 29.9
+    },
+    {
+      "id": 6,
+      "title": "Calça",
+      "price": 39.9
+    }
+  ]
+}

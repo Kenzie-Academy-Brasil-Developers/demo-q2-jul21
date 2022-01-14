@@ -1,12 +1,12 @@
-import { ChakraProvider, Heading } from "@chakra-ui/react";
-import "./App.css";
-import Home from "./pages/Home";
+import Cart from "./components/Cart";
+import Catalog from "./components/Catalog";
 
 function App() {
   return (
-    <ChakraProvider>
-      <Home />
-    </ChakraProvider>
+    <>
+      <Catalog />
+      <Cart />
+    </>
   );
 }
 
